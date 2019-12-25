@@ -11,7 +11,6 @@ import PropTypes from 'prop-types'
 
 import React from 'react'
 import Item from './Item'
-import { ProUI } from '../../values'
 import WeTouchable from '../../lib/WeTouchable'
 import ThemeableComponent from '../../theme/ThemeableComponent'
 
@@ -27,8 +26,6 @@ class Index extends ThemeableComponent {
   static Item = Item
 
   static propTypes = {
-    // 分割线颜色
-    lineColor: PropTypes.string,
     // 按压态颜色
     itemActiveColor: PropTypes.string,
     // 分割线渲染方法
@@ -50,10 +47,6 @@ class Index extends ThemeableComponent {
   constructor (props) {
     super(props)
     this._renderSeparator = this.props.renderSeparator ? this._renderCustomSeparator : this._renderSeparator.bind(this)
-  }
-
-  static defaultProps = {
-    lineColor: ProUI.color.border
   }
 
   _renderSeparator (key) {
@@ -155,7 +148,7 @@ class Index extends ThemeableComponent {
     } = this.getComponentTheme()
 
     return (
-      <View style={[style, this.props.style]}>
+      <View style={[style]}>
         {this.props.renderBorder && this._renderSeparator(TOP_SEPARATOR)}
         {this.renderItems}
         {this.props.renderBorder && this._renderSeparator(BOTTOM_SEPARATOR)}

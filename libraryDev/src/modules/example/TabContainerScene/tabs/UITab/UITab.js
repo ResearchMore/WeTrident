@@ -5,17 +5,14 @@
  */
 import React from 'react'
 import { View } from 'react-native'
-import { WeBaseScene, NavBar } from '@webank/trident'
+import { WeBaseScene, NavBar, Theme } from '@webank/trident'
 import TridentUIDemo from './components/TridentUIDemo'
 
 export default class UITab extends WeBaseScene {
   render () {
     return (
-      <View>
-        <NavBar
-          title='UITab'
-          hideLeftButton
-        />
+      <View style={{ backgroundColor: Theme.Color.backgroundNormal }}>
+        <NavBar title='UITab' hideLeftButton />
         <TridentUIDemo />
       </View>
     )

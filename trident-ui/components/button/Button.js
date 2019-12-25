@@ -31,8 +31,7 @@ export default class Button extends ThemeableComponent {
     activeColor: PropTypes.string
   }
 
-  static defaultProps = {
-  }
+  static defaultProps = {}
 
   render () {
     const {

@@ -1,9 +1,7 @@
 import Color from './Color'
 import Size from './Size'
 import Font from './Font'
-import ProUI from '../../values/pro'
-import { PixelRatio } from 'react-native'
-import dimens from '../../dimens'
+import dimens from '../../utils/dimens'
 
 const ThemeConst = {
   Color,
@@ -20,24 +18,26 @@ const createComponentTheme = (Theme = ThemeConst) => ({
       paddingHorizontal: Theme.Size.spaceM,
 
       backgroundColor: Theme.Color.backgroundPrimary,
-      borderRadius: 5,
-      borderWidth: 1 / PixelRatio.get(),
-      borderColor: '#050505'
+      borderRadius: Theme.Size.radiusM,
+      borderWidth: Theme.Size.borderWidthS,
+      borderColor: Theme.Color.borderPrimary
     },
     textStyle: {
       fontSize: Theme.Size.fontXL,
-      color: Theme.Color.textLightPrimary
+      color: Theme.Color.textLightPrimary,
+      fontWeight: Theme.Font.weightL
     },
     activeColor: Theme.Color.backgroundPrimaryDark
   },
   List: {
     style: {
       borderColor: Theme.Color.borderPrimary,
-      borderWidth: 1 / PixelRatio.get()
+      borderTopWidth: Theme.Size.borderWidthS,
+      borderBottomWidth: Theme.Size.borderWidthS
     },
     separatorStyle: {
       backgroundColor: Theme.Color.borderPrimary,
-      height: 1 / PixelRatio.get(),
+      height: Theme.Size.borderWidthS,
       marginLeft: Theme.Size.spaceM
     }
   },
@@ -88,8 +88,8 @@ const createComponentTheme = (Theme = ThemeConst) => ({
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      height: ProUI.fixedRowHeight,
-      paddingHorizontal: ProUI.spaceX.large
+      height: Theme.Size.rowHeightM,
+      paddingHorizontal: Theme.Size.spaceXL
     }
   },
   Checkbox: {
@@ -119,11 +119,11 @@ const createComponentTheme = (Theme = ThemeConst) => ({
   Table: {
     style: {},
     borderStyle: {
-      borderWidth: 1 / PixelRatio.get(),
+      borderWidth: Theme.Size.borderWidthS,
       borderColor: Theme.Color.borderPrimary
     },
     textStyle: {
-      lineHeight: ProUI.lineHeight.medium,
+      lineHeight: Theme.Size.lineHeightM,
       fontSize: Theme.Size.fontM,
       textAlign: 'center',
       color: Theme.Color.textPrimary
@@ -179,7 +179,11 @@ const createComponentTheme = (Theme = ThemeConst) => ({
     },
     styleWithIcon: {
       paddingTop: 16,
-      paddingBottom: ProUI.spaceY.medium
+      paddingBottom: Theme.Size.spaceM
+    },
+    iconStyle: {
+      alignSelf: 'center',
+      marginBottom: Theme.Size.spaceM
     },
     textStyle: {
       color: Theme.Color.textLightPrimary,
@@ -191,33 +195,33 @@ const createComponentTheme = (Theme = ThemeConst) => ({
     style: {
       width: 270,
       backgroundColor: Theme.Color.backgroundNormal,
-      borderRadius: ProUI.borderRadius,
+      borderRadius: Theme.Size.radiusM,
       shadowColor: 'rgba(12, 2, 3, 0.6)',
       shadowRadius: 6,
       overflow: 'hidden'
     },
     titleTextStyle: {
       // color: Theme.Color.textPrimary,
-      fontSize: ProUI.fontSize.xlarge,
-      lineHeight: ProUI.lineHeight.xlarge,
+      fontSize: Theme.Size.fontL,
+      lineHeight: Theme.Size.lineHeightXL,
       textAlign: 'center',
       fontWeight: 'bold'
     },
     contentTextStyle: {
       color: Theme.Color.textPrimary,
-      fontSize: ProUI.fontSize.large,
-      lineHeight: ProUI.lineHeight.large,
+      fontSize: Theme.Size.fontL,
+      lineHeight: Theme.Size.lineHeightL,
       textAlign: 'center',
-      marginTop: ProUI.spaceY.small
+      marginTop: Theme.Size.spaceXS
     },
     buttonTextStyle: {
       color: Theme.Color.backgroundPrimary,
-      fontSize: ProUI.fontSize.xlarge,
+      fontSize: Theme.Size.fontXL,
       textAlign: 'center'
     },
     borderStyle: {
-      borderWidth: ProUI.realOnePixel,
-      borderColor: ProUI.color.border
+      borderLeftWidth: Theme.Size.borderWidthS,
+      borderColor: Theme.Color.borderPrimary
     },
     contentStyle: {
       minHeight: 96,
@@ -227,19 +231,56 @@ const createComponentTheme = (Theme = ThemeConst) => ({
   },
   ActionSheet: {
     style: {
-      backgroundColor: ProUI.color.pageBackground,
+      backgroundColor: Theme.Color.backgroundSecondary,
       paddingBottom: dimens.PORTRAIT_UNSAFE_AREA_BOTTOM_HEIGHT
     },
-    titleTextStyle: {
-      lineHeight: ProUI.lineHeight.medium,
+    headerStyle: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: Theme.Color.backgroundNormal,
+      paddingHorizontal: Theme.Size.spaceL,
+      paddingVertical: Theme.Size.spaceM
+    },
+    headerTextStyle: {
+      lineHeight: Theme.Size.lineHeightM,
       color: Theme.Color.textPrimary,
       fontSize: Theme.Size.fontL,
       fontWeight: 'bold',
       textAlign: 'center'
     },
+    itemStyle: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderColor: Theme.Color.borderPrimary,
+      borderTopWidth: Theme.Size.borderWidthS,
+      backgroundColor: Theme.Color.backgroundNormal,
+      height: 50,
+      paddingHorizontal: Theme.Size.spaceL
+    },
     itemTextStyle: {
       color: Theme.Color.textPrimary,
       fontSize: Theme.Size.fontM,
+      textAlign: 'center'
+    },
+    itemSubTextStyle: {
+      color: Theme.Color.textSecondary,
+      fontSize: Theme.Size.fontS,
+      lineHeight: Theme.Size.lineHeightS,
+      textAlign: 'center'
+    },
+    footerStyle: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: Theme.Color.backgroundNormal,
+      height: 50,
+      marginTop: Theme.Size.spaceS
+    },
+    footerTextStyle: {
+      fontSize: Theme.Size.fontL,
+      color: Theme.Color.textSecondary,
       textAlign: 'center'
     }
   },
@@ -269,8 +310,7 @@ const createComponentTheme = (Theme = ThemeConst) => ({
       textAlign: 'center',
       fontSize: 17
     },
-    rightButtonStyle: {
-    },
+    rightButtonStyle: {},
     rightButtonImageStyle: { width: 20, height: 20 },
     rightButtonTextStyle: {
       color: Theme.Color.textLightPrimary,

@@ -9,10 +9,10 @@ import PropTypes from 'prop-types'
 import { PopupStub } from '@unpourtous/react-native-popup-stub'
 
 import { WeTouchable } from '@unpourtous/react-native-touchable'
-import { ProUI } from '../../values'
 import PreDefinedAnimation from './PreDefinedAnimation'
 import PopupZIndex from './PopupZIndex'
 import ThemeableComponent from '../../theme/ThemeableComponent'
+import { Theme } from '../../theme/ThemeProvider'
 
 const DEFAULT_OPTIONS = {
   autoClose: false,
@@ -94,19 +94,18 @@ export default class Dialog extends ThemeableComponent {
       <View style={[style]}>
         <View style={[contentStyle]}>
           {this.props.icon
-            ? <View style={{ alignItems: 'center', marginBottom: ProUI.spaceY.small }}>
+            ? <View style={{ alignItems: 'center', marginBottom: Theme.Size.spaceS }}>
               {this.props.icon}
             </View>
             : null}
           {this.props.title ? <Text style={[titleTextStyle]}>{this.props.title}</Text> : null}
-          {React.isValidElement(this.props.texts) ? { ...this.props.texts }
-            : this.props.texts && this.props.texts.length > 0 && this.props.texts.map((text, index) => (
-              <Text
-                style={[contentTextStyle, { marginTop: index === 0 ? 0 : ProUI.spaceY.small }]}
-                key={index}
-              >{text}
-              </Text>
-            ))}
+          {React.isValidElement(this.props.texts)
+            ? { ...this.props.texts }
+            : this.props.texts && this.props.texts.length > 0 && this.props.texts.map((text, index) => (<Text
+              style={[contentTextStyle, { marginTop: index === 0 ? 0 : Theme.Size.spaceS }]}
+              key={index}
+            >{text}</Text>))
+          }
           {this.props.renderContent && this.props.renderContent()}
         </View>
         <View style={this.props.vertical ? null : styles.flexRow}>
@@ -116,10 +115,9 @@ export default class Dialog extends ThemeableComponent {
               pressMode={item.pressMode}
               onPress={item.onItemPress ? () => item.onItemPress() : () => Dialog.hide()}
               style={[
-                this.props.vertical ? styles.itemVertical : styles.item,
+                this.props.vertical ? styles.itemVertical : styles.itemHorizontal,
                 !this.props.vertical && index > 0 && borderStyle
-              ]}
-            >
+              ]}>
               <View key={index}>
                 <Text style={[buttonTextStyle, item.textStyle]}>{item.text}</Text>
               </View>
@@ -132,33 +130,20 @@ export default class Dialog extends ThemeableComponent {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    color: ProUI.color.primary,
-    fontSize: ProUI.fontSize.xlarge,
-    lineHeight: ProUI.lineHeight.xlarge,
-    textAlign: 'center'
-  },
-  text: {
-    color: ProUI.color.primary,
-    fontSize: ProUI.fontSize.large,
-    lineHeight: ProUI.lineHeight.large,
-    textAlign: 'center',
-    marginTop: ProUI.spaceY.small
-  },
   flexRow: {
-    borderColor: ProUI.color.border,
-    borderTopWidth: ProUI.realOnePixel,
+    borderColor: Theme.Color.borderPrimary,
+    borderTopWidth: Theme.Size.borderWidthS,
     flexDirection: 'row'
   },
-  item: {
-    height: ProUI.fixedRowHeight,
+  itemHorizontal: {
+    height: Theme.Size.rowHeightM,
     flex: 1,
     justifyContent: 'center'
   },
   itemVertical: {
-    height: ProUI.fixedRowHeight,
-    borderTopWidth: ProUI.realOnePixel,
-    borderColor: ProUI.color.border,
+    height: Theme.Size.rowHeightM,
+    borderTopWidth: Theme.Size.borderWidthS,
+    borderColor: Theme.Color.borderPrimary,
     justifyContent: 'center'
   }
 })

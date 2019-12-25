@@ -42,7 +42,7 @@ export default class TridentUIDemo extends ThemeableComponent {
 
   render () {
     return (
-      <ScrollView style={{ margin: 10 }}>
+      <ScrollView style={{ margin: Theme.Size.spaceM }}>
         {this._renderSection('Checkbox')}
         <Row>
           <Text style={{ marginRight: 5 }}>点击选中</Text>
@@ -137,7 +137,8 @@ export default class TridentUIDemo extends ThemeableComponent {
         <Button
           style={{ marginTop: 10 }} text='展示ActionSheet' onPress={() => {
             ActionSheet.show({
-              header: '不同样式的Item',
+              header: 'ActionSheet',
+              footer: '取消',
               items: [{
                 text: '查看',
                 onPress: (item, index) => {
@@ -153,7 +154,7 @@ export default class TridentUIDemo extends ThemeableComponent {
                 }
               }, {
                 text: '删除',
-                subhead: '',
+                subText: 'sub text',
                 textStyle: {
                   color: Theme.Color.textError
                 },
@@ -205,12 +206,20 @@ export default class TridentUIDemo extends ThemeableComponent {
           }}
         />
         <Button
-          style={{ marginTop: 10 }} text='触发Dialog' onPress={() => {
+          style={{ marginTop: 10 }} text='展示Dialog' onPress={() => {
             const id = Dialog.show({
               title: 'Trident UI介绍',
               texts: ['它是一套在WeBank团队内容被使用过的，经受住洗礼的UI框架'],
               items: [{
-                text: '关闭',
+                text: '确定',
+                onPress: () => {
+                  Dialog.hide(id)
+                }
+              }, {
+                text: '取消',
+                textStyle: {
+                  color: Theme.Color.textSecondary
+                },
                 onPress: () => {
                   Dialog.hide(id)
                 }

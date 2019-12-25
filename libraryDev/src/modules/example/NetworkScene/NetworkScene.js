@@ -19,8 +19,8 @@ export default class NetworkScene extends WeBaseScene {
 
     APIClient.addHeaders({ testGlobalHeader: 'testGlobalHeader' })
     APIClient.addHeaders({
-      '5dc964632f0000760073ec4b': 'only_for_this_api'
-    }, undefined, /5dc964632f0000760073ec4b/)
+      booksHeader: 'only_for_this_api'
+    }, undefined, /books/)
   }
 
   render () {
@@ -65,7 +65,7 @@ export default class NetworkScene extends WeBaseScene {
           }}
         />
         <Button
-          text='特定URL()增加自定义Header' onPress={() => {
+          text='特定URL(/books)增加自定义Header' onPress={() => {
             Loading.wrap(APIClient.request(CGI.requestUseSpecificHeader).then((response) => {
               this._showDialog('请求的Header为' + JSON.stringify(response.config.headers))
             }))

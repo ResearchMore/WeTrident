@@ -6,7 +6,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Platform } from 'react-native'
 
 import PropTypes from 'prop-types'
-import { ProUI } from '../../../values'
+import { Theme } from '../../../theme'
 
 export default class WeWarningBar extends Component {
   static propTypes = {
@@ -46,22 +46,22 @@ const styles = StyleSheet.create({
   },
   txtWrap: {
     backgroundColor: '#F5B191',
-    paddingVertical: ProUI.spaceY.small,
-    paddingHorizontal: ProUI.spaceX.large
+    paddingVertical: Theme.Size.spaceS,
+    paddingHorizontal: Theme.Size.spaceL
   },
   warningTxt: {
     backgroundColor: '#F5B191',
-    color: ProUI.color.lightPrimary,
-    fontSize: ProUI.fontSize.small,
-    lineHeight: ProUI.lineHeight.small,
-    paddingVertical: ProUI.spaceY.small,
-    paddingHorizontal: ProUI.spaceX.large
+    color: Theme.Color.textLightPrimary,
+    fontSize: Theme.Size.fontS,
+    lineHeight: Theme.Size.lineHeightS,
+    paddingVertical: Theme.Size.spaceS,
+    paddingHorizontal: Theme.Size.spaceL
   },
   triangleWrapper: {
     width: 12,
     height: 6,
     overflow: 'hidden',
-    left: ProUI.spaceX.large
+    left: Theme.Size.spaceL
   },
   triangle: {
     borderStyle: 'solid',

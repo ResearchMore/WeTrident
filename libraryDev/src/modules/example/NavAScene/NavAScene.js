@@ -4,7 +4,7 @@
  * Created by erichua on 2019-10-24T06:08:28.443Z.
  */
 import React from 'react'
-import { AppNavigator, WeBaseScene, Column, Button } from '@webank/trident'
+import { AppNavigator, WeBaseScene, Column, Button, Theme } from '@webank/trident'
 import EntryList from '../../../bizComponents/EntryList'
 import NavigationStackView from '../components/NavigationStackView'
 import ObjectView from '../components/ObjectView'
@@ -30,10 +30,11 @@ export default class NavAScene extends WeBaseScene {
           />
         </EntryList>
 
-        <ObjectView ignoreKeys={[]} {...(this.params || {})} />
-
         <NavigationStackView routes={AppNavigator.getCurrentRoutes()} />
 
+        <ObjectView style={{
+          marginHorizontal: Theme.Size.spaceXL
+        }} {...(this.params || {})} />
       </Column>
     )
   }

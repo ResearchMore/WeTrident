@@ -43,3 +43,9 @@ export default class ThemeProvider extends Component {
     return this.props.children
   }
 }
+
+const Theme = ThemeProvider.Theme
+
+export {
+  Theme
+}

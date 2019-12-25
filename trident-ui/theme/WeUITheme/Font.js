@@ -1,4 +1,4 @@
 export default {
   weightM: '200',
-  weightL: '500'
+  weightL: '600'
 }

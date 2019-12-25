@@ -8,11 +8,11 @@ export default {
   // 强调文字颜色, 比 textPrimary 强, 但是非警告色
   textImportant: '#FAA',
   // 提示性文字颜色, 比 textSecondary 弱
-  textInfo: '#AAA',
+  textInfo: '#D4DAE6',
   // 警告性文字颜色, 和textImportant两者需要根据场景使用, 用于出错前的提醒
   textWarning: '#FFBE00',
   // 错误文字颜色, 用于出错后的提醒
-  textError: '#F00',
+  textError: '#E26B53',
 
   // 浅色文字主色
   textLightPrimary: '#FFFFFF',

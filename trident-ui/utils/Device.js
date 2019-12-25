@@ -19,7 +19,6 @@ export default class Device {
   }
 
   /**
-   * 检查，是否支持手机号码登陆
    * 获取是否是IOS／Android版本
    */
   static isMobileDevice () {

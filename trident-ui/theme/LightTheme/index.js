@@ -1,9 +1,7 @@
 import Color from './Color'
 import Size from './Size'
 import Font from './Font'
-import ProUI from '../../values/pro'
-import { PixelRatio } from 'react-native'
-import dimens from '../../dimens'
+import dimens from '../../utils/dimens'
 
 const ThemeConst = {
   Color,
@@ -21,7 +19,7 @@ const createComponentTheme = (Theme = ThemeConst) => ({
 
       backgroundColor: Theme.Color.backgroundPrimary,
       borderRadius: Theme.Size.rowHeightM / 2,
-      borderWidth: 1 / PixelRatio.get(),
+      borderWidth: Theme.Size.borderWidthS,
       borderColor: Theme.Color.borderPrimary
     },
     textStyle: {
@@ -33,11 +31,11 @@ const createComponentTheme = (Theme = ThemeConst) => ({
   List: {
     style: {
       borderColor: Theme.Color.borderPrimary,
-      borderWidth: 1 / PixelRatio.get()
+      borderWidth: Theme.Size.borderWidthS
     },
     separatorStyle: {
       backgroundColor: Theme.Color.borderPrimary,
-      height: 1 / PixelRatio.get(),
+      height: Theme.Size.borderWidthS,
       marginLeft: Theme.Size.spaceM
     }
   },
@@ -88,8 +86,8 @@ const createComponentTheme = (Theme = ThemeConst) => ({
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      height: ProUI.fixedRowHeight,
-      paddingHorizontal: ProUI.spaceX.large
+      height: Theme.Size.rowHeightM,
+      paddingHorizontal: Theme.Size.spaceXL
     }
   },
   Checkbox: {
@@ -119,11 +117,11 @@ const createComponentTheme = (Theme = ThemeConst) => ({
   Table: {
     style: {},
     borderStyle: {
-      borderWidth: 1 / PixelRatio.get(),
+      borderWidth: Theme.Size.borderWidthS,
       borderColor: Theme.Color.borderPrimary
     },
     textStyle: {
-      lineHeight: ProUI.lineHeight.medium,
+      lineHeight: Theme.Size.lineHeightM,
       fontSize: Theme.Size.fontM,
       textAlign: 'center',
       color: Theme.Color.textPrimary
@@ -179,7 +177,11 @@ const createComponentTheme = (Theme = ThemeConst) => ({
     },
     styleWithIcon: {
       paddingTop: 16,
-      paddingBottom: ProUI.spaceY.medium
+      paddingBottom: Theme.Size.spaceM
+    },
+    iconStyle: {
+      alignSelf: 'center',
+      marginBottom: Theme.Size.spaceM
     },
     textStyle: {
       color: Theme.Color.textLightPrimary,
@@ -191,33 +193,33 @@ const createComponentTheme = (Theme = ThemeConst) => ({
     style: {
       width: 270,
       backgroundColor: Theme.Color.backgroundNormal,
-      borderRadius: ProUI.borderRadius,
+      borderRadius: Theme.Size.radiusM,
       shadowColor: 'rgba(12, 2, 3, 0.6)',
       shadowRadius: 6,
       overflow: 'hidden'
     },
     titleTextStyle: {
       // color: Theme.Color.textPrimary,
-      fontSize: ProUI.fontSize.xlarge,
-      lineHeight: ProUI.lineHeight.xlarge,
+      fontSize: Theme.Size.fontXL,
+      lineHeight: Theme.Size.lineHeightXL,
       textAlign: 'center',
       fontWeight: 'bold'
     },
     contentTextStyle: {
       color: Theme.Color.textPrimary,
-      fontSize: ProUI.fontSize.large,
-      lineHeight: ProUI.lineHeight.large,
+      fontSize: Theme.Size.fontL,
+      lineHeight: Theme.Size.lineHeightL,
       textAlign: 'center',
-      marginTop: ProUI.spaceY.small
+      marginTop: Theme.Size.spaceS
     },
     buttonTextStyle: {
       color: Theme.Color.backgroundPrimary,
-      fontSize: ProUI.fontSize.xlarge,
+      fontSize: Theme.Size.fontXL,
       textAlign: 'center'
     },
     borderStyle: {
-      borderWidth: ProUI.realOnePixel,
-      borderColor: ProUI.color.border
+      borderWidth: Theme.Size.borderWidthS,
+      borderColor: Theme.Color.borderPrimary
     },
     contentStyle: {
       minHeight: 96,
@@ -227,11 +229,11 @@ const createComponentTheme = (Theme = ThemeConst) => ({
   },
   ActionSheet: {
     style: {
-      backgroundColor: ProUI.color.pageBackground,
+      backgroundColor: Theme.Color.backgroundSecondary,
       paddingBottom: dimens.PORTRAIT_UNSAFE_AREA_BOTTOM_HEIGHT
     },
-    titleTextStyle: {
-      lineHeight: ProUI.lineHeight.medium,
+    headerTextStyle: {
+      lineHeight: Theme.Size.lineHeightM,
       color: Theme.Color.textPrimary,
       fontSize: Theme.Size.fontL,
       fontWeight: 'bold',

@@ -3,11 +3,10 @@
  * @author Lemorili
 */
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import PropTypes from 'prop-types'
 import { PopupStub } from '@unpourtous/react-native-popup-stub'
 import Icon from '../icon/Icon'
-import ProUI from '../../values/pro'
 import PopupZIndex from './PopupZIndex'
 import { iconNamePropType } from '../../propTypeUtils'
 import ThemeableComponent from '../../theme/ThemeableComponent'
@@ -16,7 +15,7 @@ import WePropTypes from '../../utils/WePropTypes'
 export default class Toast extends ThemeableComponent {
   namespace = 'Toast'
 
-  themeStyleKeys = ['style', 'styleWithIcon', 'textStyle']
+  themeStyleKeys = ['style', 'styleWithIcon', 'iconStyle', 'textStyle']
 
   static propTypes = {
     icon: iconNamePropType,
@@ -49,13 +48,14 @@ export default class Toast extends ThemeableComponent {
     const {
       style,
       styleWithIcon,
+      iconStyle,
       textStyle
     } = this.getComponentTheme()
 
     return (
       <View style={[style, hasIcon ? styleWithIcon : null]}>
         {hasIcon && <Icon
-          style={styles.toastIcon}
+          style={iconStyle}
           name={this.props.icon}
         />}
         <View>
@@ -78,11 +78,3 @@ function calcDuration (len) {
     return Math.round(len / MAX_LENGTH * 3000)
   }
 }
-
-const styles = StyleSheet.create({
-  toastX: {},
-  toastIcon: {
-    alignSelf: 'center',
-    marginBottom: ProUI.spaceY.medium
-  }
-})

@@ -6,10 +6,10 @@ import {
   TouchableWithoutFeedback
 } from 'react-native'
 import PropTypes from 'prop-types'
-import { ProUI } from '../../values'
 import WeWarningBar from './lib/WeWarningBar'
 import { RenderUtils } from '../../utils'
 import CurrencySymbols from './CurrencySymbols'
+import { Theme } from '../../theme'
 
 class FinancialInput extends Component {
   static propTypes = {
@@ -77,23 +77,23 @@ class FinancialInput extends Component {
 
     return (
       <View style={[
-        { paddingTop: ProUI.spaceY.medium, backgroundColor: ProUI.color.moduleBackground },
+        { paddingTop: Theme.Size.spaceM, backgroundColor: Theme.Color.backgroundNormal },
         this.props.style
       ]}
       >
-        {topInfo ? <View style={{ minHeight: ProUI.lineHeight.medium }}>
+        {topInfo ? <View style={{ minHeight: Theme.Size.lineHeightM }}>
           {RenderUtils.switch([
             [typeof topInfo === 'string',
               <View style={{
                 flexDirection: 'row',
-                paddingLeft: ProUI.spaceX.large,
+                paddingLeft: Theme.Size.spaceL,
                 alignItems: 'center'
               }}
               >
                 <Text style={{
-                  color: ProUI.color.sub,
-                  fontSize: ProUI.fontSize.medium,
-                  lineHeight: ProUI.lineHeight.medium
+                  color: Theme.Color.textSecondary,
+                  fontSize: Theme.Size.fontM,
+                  lineHeight: Theme.Size.lineHeightM
                 }}
                 >{topInfo}
                 </Text>
@@ -105,8 +105,8 @@ class FinancialInput extends Component {
           flexDirection: 'row',
           height: 70,
           alignItems: 'center',
-          paddingLeft: ProUI.spaceX.large,
-          paddingRight: ProUI.spaceX.large,
+          paddingLeft: Theme.Size.spaceL,
+          paddingRight: Theme.Size.spaceL,
           paddingBottom: 10
         }}
         >
@@ -115,13 +115,13 @@ class FinancialInput extends Component {
               flex: 1,
               flexDirection: 'row',
               alignItems: 'center',
-              marginRight: ProUI.spaceX.medium
+              marginRight: Theme.Size.spaceM
             }}
             >
               <Text style={{
                 fontSize: 40,
-                color: disabled ? ProUI.color.sub : ProUI.color.primary,
-                marginRight: ProUI.spaceX.medium
+                color: disabled ? Theme.Color.textSecondary : Theme.Color.textPrimary,
+                marginRight: Theme.Size.spaceM
               }}
               >{CurrencySymbols[currencyCode]}
               </Text>
@@ -129,12 +129,12 @@ class FinancialInput extends Component {
                 style={{
                   flex: 1,
                   fontSize: amount && amount.length > 10 ? 35 : 40,
-                  color: isShowPlaceholder ? '#00000000' : (disabled ? ProUI.color.sub : ProUI.color.primary),
+                  color: isShowPlaceholder ? '#00000000' : (disabled ? Theme.Color.textSecondary : Theme.Color.textPrimary),
                   paddingVertical: 0
                 }}
                 autoFocus={autoFocus && !disabled}
                 editable={!disabled}
-                placeholderTextColor={ProUI.color.info}
+                placeholderTextColor={Theme.Color.textInfo}
                 onFocus={this.onFocus}
                 onBlur={this.onBlur}
                 onChangeText={this.onChange}
@@ -157,7 +157,7 @@ class FinancialInput extends Component {
                     style={{
                       fontSize: 18,
                       paddingLeft: 38,
-                      color: ProUI.color.info,
+                      color: Theme.Color.textInfo,
                       backgroundColor: '#FFFFFF00'
                     }}
                   >{placeholder}
@@ -178,7 +178,7 @@ class FinancialInput extends Component {
             alignItems: 'center',
             position: 'absolute',
             bottom: 3,
-            left: 35 + ProUI.spaceX.large - (unit.length > 1 ? 5 : 0)
+            left: 35 + Theme.Size.spaceL - (unit.length > 1 ? 5 : 0)
           }}
           >
             <View style={{
@@ -186,24 +186,24 @@ class FinancialInput extends Component {
               height: 3,
               top: 0,
               position: 'absolute',
-              backgroundColor: ProUI.color.moduleBackground,
-              borderColor: ProUI.color.important,
-              borderRightWidth: ProUI.realOnePixel,
-              borderTopWidth: ProUI.realOnePixel,
+              backgroundColor: Theme.Color.backgroundNormal,
+              borderColor: Theme.Color.borderImportant,
+              borderRightWidth: Theme.Size.borderWidthS,
+              borderTopWidth: Theme.Size.borderWidthS,
               transform: [{ rotate: '-45deg' }],
               zIndex: 1
             }}
             />
             <View style={{
               marginTop: 1.5,
-              borderRadius: ProUI.smallBorderRadius,
-              borderColor: ProUI.color.important,
-              borderWidth: ProUI.realOnePixel,
-              paddingHorizontal: ProUI.spaceX.small,
+              borderRadius: Theme.Size.radiusS,
+              borderColor: Theme.Color.borderImportant,
+              borderWidth: Theme.Size.borderWidthS,
+              paddingHorizontal: Theme.Size.spaceS,
               paddingVertical: 1
             }}
             >
-              <Text style={{ fontSize: 10, color: ProUI.color.important }}>{unit}</Text>
+              <Text style={{ fontSize: 10, color: Theme.Color.textImportant }}>{unit}</Text>
             </View>
           </View> : null}
         </View>
@@ -217,15 +217,15 @@ class FinancialInput extends Component {
             {RenderUtils.switch([
               [typeof bottomInfo === 'string',
                 <View style={{
-                  paddingTop: ProUI.spaceY.small,
-                  paddingHorizontal: ProUI.spaceX.large,
-                  paddingBottom: ProUI.spaceY.module
+                  paddingTop: Theme.Size.spaceS,
+                  paddingHorizontal: Theme.Size.spaceL,
+                  paddingBottom: Theme.Size.spaceM
                 }}
                 >
                   <Text style={{
-                    fontSize: ProUI.fontSize.small,
-                    lineHeight: ProUI.lineHeight.small,
-                    color: ProUI.color.sub
+                    fontSize: Theme.Size.fontS,
+                    lineHeight: Theme.Size.lineHeightS,
+                    color: Theme.Color.textSecondary
                   }}
                   >{bottomInfo}
                   </Text>

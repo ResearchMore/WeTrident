@@ -2,7 +2,7 @@
  * Created by erichua on 26/12/2017.
  */
 import React, { Component } from 'react'
-import { AppNavigator, TridentApp, NavBar, RNEnv, WeUITheme, createTheme } from '@webank/trident'
+import { AppNavigator, TridentApp, NavBar, RNEnv, WeUITheme, createTheme, Theme } from '@webank/trident'
 
 import { WTConsoleView } from './bizComponents/WTConsoleView'
 import CardStackStyleInterpolator from '@unpourtous/react-navigation/src/views/CardStack/CardStackStyleInterpolator'
@@ -33,7 +33,7 @@ export default class AppEntry extends Component {
           },
           headerMode: 'screen',
           cardStyle: {
-            // backgroundColor: 'red'
+            backgroundColor: Theme.Color.backgroundNormal
           },
           // make android and ios have the same transition effect
           transitionConfig: () => ({

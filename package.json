@@ -58,7 +58,7 @@
     "url": "0.11.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/runtime": "^7.7.2",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.8.0",
@@ -69,6 +69,9 @@
     "husky": "^3.1.0",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.57.0",
+    "react": "16.0.0",
+    "react-native": "https://github.com/UnPourTous/react-native.git#release/0.51.8",
+    "react-test-renderer": "16.0.0",
     "snazzy": "^8.0.0",
     "standard": "^13.1.0"
   },

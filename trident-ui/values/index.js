@@ -3,9 +3,7 @@
  */
 
 import dimens from './dimens'
-import ProUI from './pro'
 
 export {
-  dimens,
-  ProUI
+  dimens
 }

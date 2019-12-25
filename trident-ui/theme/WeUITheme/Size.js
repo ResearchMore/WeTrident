@@ -1,5 +1,7 @@
+import { PixelRatio } from 'react-native'
+
 export default {
-  borderWidthS: 0.5,
+  borderWidthS: 1 / PixelRatio.get(),
   borderWidthM: 1,
   borderWidthL: 2,
   borderWidthXL: 4,
