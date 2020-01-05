@@ -1,4 +1,4 @@
-
+## This branch build from react android source, used for test or fix some bug in react-native
 
 # WeTrident的目标
 可快速开发支持商业运营的App框架。
